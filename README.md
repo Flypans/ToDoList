@@ -1,6 +1,6 @@
 # TodoList
 
-## Description
+## Description:
 
 A C# Todo list application showcasing the Repository Pattern. 
 This mini project demonstrates key C# concepts and architectural design through a task management system. 
