@@ -3,9 +3,10 @@ using System.Linq;
 
 namespace ToDoList.Common
 {
-    public class ToDoRepositoryInMemory : IToDoRepositoryInMemory
+    public class ToDoRepositoryInMemory : IToDoRepository
     {
         //collection for sharing
+        //_todos Variables are reset by the garbage collector when the program ends.
         private static List<ToDo> _todos = new List<ToDo>();
 
         //Constructor

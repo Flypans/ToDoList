@@ -8,7 +8,7 @@ namespace ToDoList.ConsoleApp
     {
         static void Main(string[] args)
         {
-            IToDoRepositoryInMemory _repository = new ToDoRepositoryInMemory();
+            IToDoRepository _repository = new ToDoRepositoryInMemory();
             List<ToDo> toDos = new List<ToDo>();
 
             //CRUD(Read)

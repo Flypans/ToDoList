@@ -2,7 +2,7 @@
 
 namespace ToDoList.Common
 {
-    public interface IToDoRepositoryInMemory
+    public interface IToDoRepository
     {
         //Method Signature
         void Add(ToDo model);//Create
