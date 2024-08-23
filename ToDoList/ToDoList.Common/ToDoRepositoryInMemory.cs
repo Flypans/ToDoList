@@ -24,7 +24,7 @@ namespace ToDoList.Common
 
         public void Add(ToDo model)
         {
-            model.Id = _todos.Max(t => t.Id);
+            model.Id = _todos.Max(t => t.Id) + 1;
             _todos.Add(model);
         }
 
