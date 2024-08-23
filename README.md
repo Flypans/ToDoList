@@ -14,7 +14,7 @@ Ideal for developers looking to reinforce C# skills, understand practical applic
 * Visual Studio 2019
 
  ## Design Patterns:
--[] Value Object Pattern
--[] Repository Pattern
--[] Singleton Pattern
--[] Dependency Injection Pattern
+- [x] Value Object Pattern
+- [x] Repository Pattern
+- [ ] Singleton Pattern
+- [x] Dependency Injection Pattern
