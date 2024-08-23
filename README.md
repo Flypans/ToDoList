@@ -13,5 +13,8 @@ Ideal for developers looking to reinforce C# skills, understand practical applic
 * C# 8.0
 * Visual Studio 2019
 
- ## Patterns:
- * Repository Pattern
+ ## Design Patterns:
+- [x] Value Object Pattern
+- [x] Repository Pattern
+- [ ] Singleton Pattern
+- [x] Dependency Injection Pattern
