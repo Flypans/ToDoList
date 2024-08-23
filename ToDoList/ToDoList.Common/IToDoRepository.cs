@@ -5,10 +5,26 @@ namespace ToDoList.Common
     public interface IToDoRepository
     {
         //Method Signature
-        void Add(ToDo model);//Create
-        List<ToDo> GetAll(); //Read
+        //    Add
+        void Add(ToDo model);
 
-        //Update
-        //Delete
+        //Read
+        List<ToDo> GetAll();
+
+        //Browse
+        //ToDo Browse(int id);
+        List<ToDo> Browse(int id);
+
+        //    Edit
+        //    Delete
+        //    Search
+        //    Has
+        //    Ordering
+        //    paging
+
+
+
+
+
     }
 }

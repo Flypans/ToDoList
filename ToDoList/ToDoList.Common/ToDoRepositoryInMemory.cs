@@ -15,8 +15,8 @@ namespace ToDoList.Common
             //_todos = new List<ToDo>();// Collection Initializer 
 
             //Collection Initializer + Object Initializer
-            _todos = new List<ToDo> 
-            { 
+            _todos = new List<ToDo>
+            {
                 new ToDo { Id = 1, Title = "C#", IsDone = true },
                 new ToDo { Id = 2, Title = "WPF", IsDone = true },
                 new ToDo { Id = 3, Title = ".NET", IsDone = false }
@@ -33,5 +33,15 @@ namespace ToDoList.Common
         {
             return _todos.ToList();
         }
-    }
+/*
+        public ToDo Browse(int id)
+        {
+            return _todos.Where(t => t.Id == id).SingleOrDefault();
+        }
+*/
+        public List<ToDo> Browse(int id)
+        {
+         return _todos.Where(t => t.Id == id).ToList();
+        }
+}
 }
