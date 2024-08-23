@@ -1,17 +1,36 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace ToDoList.Common
 {
     public class ToDoRepositoryInMemory : IToDoRepositoryInMemory
     {
+        //collection for sharing
+        private static List<ToDo> _todos = new List<ToDo>();
+
+        //Constructor
+        public ToDoRepositoryInMemory()
+        {
+            //_todos = new List<ToDo>();// Collection Initializer 
+
+            //Collection Initializer + Object Initializer
+            _todos = new List<ToDo> 
+            { 
+                new ToDo { Id = 1, Title = "C#", IsDone = true },
+                new ToDo { Id = 1, Title = "WPF", IsDone = true },
+                new ToDo { Id = 1, Title = ".NET", IsDone = false }
+            };
+        }
+
         public void Add(ToDo model)
         {
-            throw new System.NotImplementedException();
+            model.Id = _todos.Max(t => t.Id);
+            _todos.Add(model);
         }
 
         public List<ToDo> GetAll()
         {
-            throw new System.NotImplementedException();
+            return _todos.ToList();
         }
     }
 }
