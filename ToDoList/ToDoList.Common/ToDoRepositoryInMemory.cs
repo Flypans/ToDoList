@@ -17,8 +17,8 @@ namespace ToDoList.Common
             _todos = new List<ToDo> 
             { 
                 new ToDo { Id = 1, Title = "C#", IsDone = true },
-                new ToDo { Id = 1, Title = "WPF", IsDone = true },
-                new ToDo { Id = 1, Title = ".NET", IsDone = false }
+                new ToDo { Id = 2, Title = "WPF", IsDone = true },
+                new ToDo { Id = 3, Title = ".NET", IsDone = false }
             };
         }
 
