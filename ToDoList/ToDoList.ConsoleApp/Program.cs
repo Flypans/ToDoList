@@ -7,31 +7,32 @@ namespace ToDoList.ConsoleApp
 {
     class Program
     {
-        static void Main(string[] args)
+        static IToDoRepository _repository = new ToDoRepositoryInMemory();
+        static List<ToDo> toDos = new List<ToDo>();
+        //Read
+        private static void ReadTodoList()
         {
-            IToDoRepository _repository = new ToDoRepositoryInMemory();
-            List<ToDo> toDos = new List<ToDo>();
-
-            //Read
             toDos = _repository.GetAll();
 
             foreach (var t in toDos)
             {
                 Console.WriteLine($"ID: {t.Id}, Title: {t.Title}, is done: {t.IsDone}");
             }
-            Console.WriteLine("Default Database");
+        }
+
+        static void Main(string[] args)
+        {
+            //IToDoRepository _repository = new ToDoRepositoryInMemory();
+            //List<ToDo> toDos = new List<ToDo>();
+
+            ReadTodoList();
+            Console.WriteLine("Default Data Base");
 
             //Add
             ToDo todo = new ToDo { Title = "SQL", IsDone = true };
             _repository.Add(todo);
 
-            //Read
-            toDos = _repository.GetAll();
-
-            foreach (var t in toDos)
-            {
-                Console.WriteLine($"ID: {t.Id}, Title: {t.Title}, is done: {t.IsDone}");
-            }
+            ReadTodoList();
 
             //Browse
             string toDoTitle = "";
@@ -50,11 +51,10 @@ namespace ToDoList.ConsoleApp
             }
             else
             {
-                Console.WriteLine($"Title { toDoTitle} 카테고리가 없다.");
+                Console.WriteLine($"Title { toDoTitle} is no category.");
             }
 
             //Delete
-            
             Console.Write("Enter the ID you want to delete: ");
 
             string DeleteId = Console.ReadLine();
@@ -63,13 +63,30 @@ namespace ToDoList.ConsoleApp
             _repository.Delete(IdNumber);
             Console.WriteLine($"Delete Id: {IdNumber}");
 
-            toDos = _repository.GetAll();
+            ReadTodoList();
 
-            foreach (var t in toDos)
+            //Edit
+            //_repository.Edit(new ToDo { Id = 4, Title = "MAUI", IsDone = false });
+
+            Console.Write("Please enter the ID  of the task to edit: ");
+            int editId = int.Parse(Console.ReadLine());
+
+            Console.Write("Please enter the new title:");
+            string editTitle = Console.ReadLine();
+
+            Console.WriteLine("Mark as done ? (y/n)");
+            string editIsDone = Console.ReadLine().ToLower();
+            bool editIsDoneResulet = editIsDone == "y";
+
+            if (editIsDone == "y" || editIsDone == "n")
             {
-                Console.WriteLine($"ID: {t.Id}, Title: {t.Title}, is done: {t.IsDone}");
+                _repository.Edit(new ToDo { Id = editId, Title = editTitle, IsDone = editIsDoneResulet });
             }
-            Console.WriteLine("Default Database");
+            else
+            {
+                Console.WriteLine("In put Error.");
+            }
+            ReadTodoList();
         }
     }
 }

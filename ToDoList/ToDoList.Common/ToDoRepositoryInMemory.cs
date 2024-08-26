@@ -49,5 +49,23 @@ namespace ToDoList.Common
             }
             return false;
         }
+
+        public bool Edit(ToDo model)
+        {
+/*
+            var result = _todos.Where(c => c.Id == model.Id)
+                .Select(c => { c.Title = model.Title; return c; })
+                .SingleOrDefault();
+*/
+            var result = _todos.FirstOrDefault(c => c.Id == model.Id);
+
+            if (result != null )
+            {
+                result.Title = model.Title;
+                result.IsDone = model.IsDone;
+                return true;
+            }
+            return false;
+        }
     }
 }

@@ -14,8 +14,9 @@ namespace ToDoList.Common
         
         //Read
         List<ToDo> GetAll();
-        
+
         //Edit
+        bool Edit(ToDo model);
 
         //Add
         void Add(ToDo model);
