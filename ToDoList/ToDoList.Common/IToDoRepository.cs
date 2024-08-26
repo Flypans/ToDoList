@@ -15,8 +15,8 @@ namespace ToDoList.Common
         List<ToDo> GetAll();
 
         //Browse
-        //ToDo Browse(int id);
-        List<ToDo> Browse(int id);
+        List<ToDo> Browse(string title);
+
 
         //    Edit
         //    Delete

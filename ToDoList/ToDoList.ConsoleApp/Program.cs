@@ -9,12 +9,10 @@ namespace ToDoList.ConsoleApp
     {
         static void Main(string[] args)
         {
-            //ToDoRepositoryInMemory repository = new ToDoRepositoryInMemory();//No Interface
             IToDoRepository _repository = new ToDoRepositoryInMemory();
             List<ToDo> toDos = new List<ToDo>();
 
             //Read
-            //toDos = repository.GetAll();
             toDos = _repository.GetAll();
 
             foreach (var t in toDos)
@@ -25,11 +23,9 @@ namespace ToDoList.ConsoleApp
 
             //Add
             ToDo todo = new ToDo { Title = "SQL", IsDone = true };
-            //repository.Add(todo);//No Interface
             _repository.Add(todo);
 
             //Read
-            //toDos = repository.GetAll();
             toDos = _repository.GetAll();
 
             foreach (var t in toDos)
@@ -38,38 +34,23 @@ namespace ToDoList.ConsoleApp
             }
 
             //Browse
-            int toDoId = 0;
-            Console.Write("Insert Id: " );
-            string x = Console.ReadLine();
+            string toDoTitle = "";
+            Console.Write("Please enter the title of the ToDo item you are looking for: ");
 
-            if (int.TryParse(x, out toDoId))
-            {
-                Console.Write($"To browse the list in detail, the list ID : {x}  - ");
-            }
-            else
-            {
-                Console.WriteLine("유효한 정수 입력하세요.");
-            }
+            toDoTitle = Console.ReadLine();
 
-            //var toDoBrowse = repository.Browse(toDoId);
-            var toDoBrowse = _repository.Browse(toDoId);
+            var matchingToDos = _repository.Browse(toDoTitle);
 
-            /*            
-                        if (toDoBrowse != null)
-                        {
-                            Console.WriteLine($"Browse Id: {toDoBrowse.Id}, Title {toDoBrowse.Title}");
-                        }
-            */
-            if (toDoBrowse != null && toDoBrowse.Any())
+            if (matchingToDos != null && matchingToDos.Any())
             {
-                foreach (var t in toDoBrowse)
+                foreach (var t in matchingToDos)
                 {
-                    Console.WriteLine($"Title: {t.Title}");
+                    Console.WriteLine($" Title: {t.Title}, Id: {t.Id}, is Done: {t.IsDone}");
                 }
             }
             else
             {
-                Console.WriteLine($"{ toDoId }번 카테고리가 없다.");
+                Console.WriteLine($"Title { toDoTitle} 카테고리가 없다.");
             }
         }
     }

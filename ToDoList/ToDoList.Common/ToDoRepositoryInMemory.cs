@@ -15,8 +15,6 @@ namespace ToDoList.Common
         //Constructor
         public ToDoRepositoryInMemory()
         {
-            //_todos = new List<ToDo>();// Collection Initializer 
-
             //Collection Initializer + Object Initializer
             _todos = new List<ToDo>
             {
@@ -36,15 +34,9 @@ namespace ToDoList.Common
         {
             return _todos.ToList();
         }
-/*
-        public ToDo Browse(int id)
+        public List<ToDo> Browse(string title)
         {
-            return _todos.Where(t => t.Id == id).SingleOrDefault();
+            return _todos.Where(t => t.Title.Equals(title)).ToList();
         }
-*/
-        public List<ToDo> Browse(int id)
-        {
-         return _todos.Where(t => t.Id == id).ToList();
-        }
-}
+    }
 }
