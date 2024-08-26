@@ -67,5 +67,10 @@ namespace ToDoList.Common
             }
             return false;
         }
+
+        public List<ToDo>Search(string query)
+        {
+            return _todos.Where(c => c.Title.Contains(query)).ToList();
+        }
     }
 }
