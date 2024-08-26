@@ -3,6 +3,9 @@ using System.Linq;
 
 namespace ToDoList.Common
 {
+    /// <summary>
+    /// Repository Implementation
+    /// </summary>
     public class ToDoRepositoryInMemory : IToDoRepository
     {
         //collection for sharing

@@ -2,6 +2,9 @@
 
 namespace ToDoList.Common
 {
+    /// <summary>
+    /// Repository Interface
+    /// </summary>
     public interface IToDoRepository
     {
         //Method Signature
