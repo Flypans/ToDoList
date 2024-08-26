@@ -119,6 +119,10 @@ namespace ToDoList.ConsoleApp
             var query = Console.ReadLine();
             var toDo = _repository.Search(query);
             ToDoPrint(toDo);
+<<<<<<< HEAD
+=======
+            
+>>>>>>> 7b9dfebd6553ff8b8279d40f2663b43b327fa0eb
         }
             
     }
