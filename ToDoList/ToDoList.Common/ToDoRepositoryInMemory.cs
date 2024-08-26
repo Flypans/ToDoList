@@ -38,5 +38,16 @@ namespace ToDoList.Common
         {
             return _todos.Where(t => t.Title.Equals(title)).ToList();
         }
+
+        public bool Delete(int id)
+        {
+            int removedCount = _todos.RemoveAll(c => c.Id == id);
+
+            if (removedCount > 0)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

@@ -52,6 +52,24 @@ namespace ToDoList.ConsoleApp
             {
                 Console.WriteLine($"Title { toDoTitle} 카테고리가 없다.");
             }
+
+            //Delete
+            
+            Console.Write("Enter the ID you want to delete: ");
+
+            string DeleteId = Console.ReadLine();
+            int IdNumber = Convert.ToInt32(DeleteId);
+
+            _repository.Delete(IdNumber);
+            Console.WriteLine($"Delete Id: {IdNumber}");
+
+            toDos = _repository.GetAll();
+
+            foreach (var t in toDos)
+            {
+                Console.WriteLine($"ID: {t.Id}, Title: {t.Title}, is done: {t.IsDone}");
+            }
+            Console.WriteLine("Default Database");
         }
     }
 }
