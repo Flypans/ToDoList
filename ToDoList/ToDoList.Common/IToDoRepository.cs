@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using static ToDoList.Common.OrderTypes;
 
 namespace ToDoList.Common
 {
@@ -28,8 +29,11 @@ namespace ToDoList.Common
         List<ToDo> Search(string query);
 
         //Has
+        int Has();
 
         //Ordering
+        IEnumerable<ToDo> Ordering(OrderOption orderOption);
+
 
         //paging
 

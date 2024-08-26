@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using static ToDoList.Common.OrderTypes;
 
 namespace ToDoList.Common
 {
@@ -23,7 +24,6 @@ namespace ToDoList.Common
                 new ToDo { Id = 3, Title = ".NET", IsDone = false }
             };
         }
-
         public void Add(ToDo model)
         {
             model.Id = _todos.Max(t => t.Id) + 1;
@@ -52,14 +52,14 @@ namespace ToDoList.Common
 
         public bool Edit(ToDo model)
         {
-/*
-            var result = _todos.Where(c => c.Id == model.Id)
-                .Select(c => { c.Title = model.Title; return c; })
-                .SingleOrDefault();
-*/
+            /*
+                        var result = _todos.Where(c => c.Id == model.Id)
+                            .Select(c => { c.Title = model.Title; return c; })
+                            .SingleOrDefault();
+            */
             var result = _todos.FirstOrDefault(c => c.Id == model.Id);
 
-            if (result != null )
+            if (result != null)
             {
                 result.Title = model.Title;
                 result.IsDone = model.IsDone;
@@ -67,10 +67,19 @@ namespace ToDoList.Common
             }
             return false;
         }
-
-        public List<ToDo>Search(string query)
+        public List<ToDo> Search(string query)
         {
             return _todos.Where(c => c.Title.Contains(query)).ToList();
+        }
+
+        public int Has()
+        {
+            return _todos.Count();
+        }
+
+        public IEnumerable<ToDo> Ordering(OrderOption orderOption)
+        {
+            return _todos;
         }
     }
 }

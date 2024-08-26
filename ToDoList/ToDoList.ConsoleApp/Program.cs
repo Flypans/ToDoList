@@ -33,8 +33,20 @@ namespace ToDoList.ConsoleApp
         {
             //IToDoRepository _repository = new ToDoRepositoryInMemory();
             //List<ToDo> toDos = new List<ToDo>();
+            int count = _repository.Has();
+            
+            //Count
+            if (_repository.Has() > 0)
+            {
+                Console.WriteLine("[Has]");
+                Console.WriteLine($"It has {count} default Data.");
+            }
+            else
+            {
+                Console.WriteLine("No default Data");
 
-            ReadTodoList();
+            }
+        ReadTodoList();
             Console.WriteLine("Default Data Base");
 
             //Add
@@ -107,7 +119,7 @@ namespace ToDoList.ConsoleApp
             var query = Console.ReadLine();
             var toDo = _repository.Search(query);
             ToDoPrint(toDo);
-            
         }
+            
     }
 }
