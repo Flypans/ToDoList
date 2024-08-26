@@ -25,6 +25,7 @@ namespace ToDoList.Common
         bool Delete(int id);
 
         //Search
+        List<ToDo> Search(string query);
 
         //Has
 
