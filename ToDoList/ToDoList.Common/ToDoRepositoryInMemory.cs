@@ -101,5 +101,11 @@ namespace ToDoList.Common
             }
             return toDo;
         }
+
+        public List<ToDo> Paging(int pageNumber = 1,  int pageSize = 10)
+        {
+            return _todos.Skip((pageNumber -1) * pageSize).Take(pageSize).ToList();
+        }
+
     }
 }

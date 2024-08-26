@@ -47,7 +47,6 @@ namespace ToDoList.ConsoleApp
             else
             {
                 Console.WriteLine("No default Data");
-
             }
         ReadTodoList();
             Console.WriteLine("Default Data Base");
@@ -129,7 +128,15 @@ namespace ToDoList.ConsoleApp
             //var orderingToDo = _repository.Ordering(OrderOption.Ascending);
 
             ToDoPrint(orderingToDo.ToList());
+
+            //Paging
+            Console.WriteLine("[Paging]");
+            var categories = _repository.Paging(2, 2);
+            if(categories.Count > 1)
+            {
+                categories.RemoveAt(0);
+            }
+            ToDoPrint(categories);
         }
-            
     }
 }

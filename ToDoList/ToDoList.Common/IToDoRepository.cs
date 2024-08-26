@@ -34,12 +34,7 @@ namespace ToDoList.Common
         //Ordering
         IEnumerable<ToDo> Ordering(OrderOption orderOption);
 
-
         //paging
-
-
-
-
-
+        List<ToDo> Paging(int pageNumber, int pageSize);
     }
 }
