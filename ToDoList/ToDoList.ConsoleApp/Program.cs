@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using ToDoList.Common;
+using static ToDoList.Common.OrderTypes;
 
 namespace ToDoList.ConsoleApp
 {
@@ -19,6 +20,7 @@ namespace ToDoList.ConsoleApp
             {
                 Console.WriteLine($"ID: {t.Id}, Title: {t.Title}, is done: {t.IsDone}");
             }
+            Console.WriteLine("");
         }
 
         private static void ToDoPrint(List<ToDo> todos)
@@ -27,6 +29,7 @@ namespace ToDoList.ConsoleApp
             {
                 Console.WriteLine($"ID:{todo.Id}, TiTle: {todo.Title}, is done: {todo.IsDone}");
             }
+            Console.WriteLine("");
         }
 
         static void Main(string[] args)
@@ -55,27 +58,6 @@ namespace ToDoList.ConsoleApp
             _repository.Add(todo);
 
             ReadTodoList();
-
-            //Browse
-            string toDoTitle = "";
-            Console.WriteLine("[Browse]");
-            Console.Write("Please enter the title of the ToDo item you are looking for: ");
-
-            toDoTitle = Console.ReadLine();
-
-            var matchingToDos = _repository.Browse(toDoTitle);
-
-            if (matchingToDos != null && matchingToDos.Any())
-            {
-                foreach (var t in matchingToDos)
-                {
-                    Console.WriteLine($" Title: {t.Title}, Id: {t.Id}, is Done: {t.IsDone}");
-                }
-            }
-            else
-            {
-                Console.WriteLine($"Title { toDoTitle} is no category.");
-            }
 
             //Delete
             Console.WriteLine("[Delete]");
@@ -119,10 +101,34 @@ namespace ToDoList.ConsoleApp
             var query = Console.ReadLine();
             var toDo = _repository.Search(query);
             ToDoPrint(toDo);
-<<<<<<< HEAD
-=======
-            
->>>>>>> 7b9dfebd6553ff8b8279d40f2663b43b327fa0eb
+
+            //Browse
+            string toDoTitle = "";
+            Console.WriteLine("[Browse]");
+            Console.Write("Please enter the title of the ToDo item you are looking for: ");
+
+            toDoTitle = Console.ReadLine();
+
+            var matchingToDos = _repository.Browse(toDoTitle);
+
+            if (matchingToDos != null && matchingToDos.Any())
+            {
+                foreach (var t in matchingToDos)
+                {
+                    Console.WriteLine($" Title: {t.Title}, Id: {t.Id}, is Done: {t.IsDone}");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Title { toDoTitle} is no category.");
+            }
+
+            //Ordering
+            Console.WriteLine("[Ordering]");
+            var orderingToDo = _repository.Ordering(OrderOption.Descending);
+            //var orderingToDo = _repository.Ordering(OrderOption.Ascending);
+
+            ToDoPrint(orderingToDo.ToList());
         }
             
     }

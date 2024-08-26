@@ -79,7 +79,27 @@ namespace ToDoList.Common
 
         public IEnumerable<ToDo> Ordering(OrderOption orderOption)
         {
-            return _todos;
+            IEnumerable<ToDo> toDo;
+            switch (orderOption)
+            {
+                case OrderOption.Ascending:
+                    toDo = _todos.OrderBy(c => c.Title);
+                    break;
+
+                case OrderOption.Descending:
+                    toDo = _todos.OrderByDescending(c => c.Title);
+/*
+                    toDo = from todo in _todos
+                           orderby todo.Title descending
+                           select todo;
+*/
+                    break;
+
+                default:
+                    toDo = _todos;
+                    break;
+            }
+            return toDo;
         }
     }
 }
